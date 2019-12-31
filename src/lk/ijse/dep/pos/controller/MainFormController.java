@@ -26,7 +26,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import lk.ijse.dep.pos.db.DBConnection;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -163,7 +162,7 @@ public class MainFormController implements Initializable {
         }
     }
 
-    public void btnRestore_OnAction(ActionEvent actionEvent) {
+    public void btnRestore_OnAction(ActionEvent actionEvent) {/*
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Let's restore the backup");
         fileChooser.getExtensionFilters().
@@ -212,11 +211,11 @@ public class MainFormController implements Initializable {
             });
 
             new Thread(task).start();
-        }
+        }*/
 
     }
 
-    public void btnBackup_OnAction(ActionEvent actionEvent) {
+    public void btnBackup_OnAction(ActionEvent actionEvent) {/*
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save the DB Backup");
         fileChooser.getExtensionFilters().
@@ -268,6 +267,6 @@ public class MainFormController implements Initializable {
             });
 
             new Thread(task).start();
-        }
+        }*/
     }
 }

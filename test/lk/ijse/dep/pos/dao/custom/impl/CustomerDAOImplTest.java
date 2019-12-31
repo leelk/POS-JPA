@@ -1,13 +1,12 @@
 package lk.ijse.dep.pos.dao.custom.impl;
 
 
-import lk.ijse.dep.pos.db.DBConnection;
 import lk.ijse.dep.pos.entity.Gender;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-class CustomerDAOImplTest {
+class CustomerDAOImplTest {/*
 
     static class Test{
         Gender g;
@@ -39,5 +38,5 @@ class CustomerDAOImplTest {
 
     void save() throws Exception {
 //        new CustomerDAOImpl().save(new Customer("C014","Kusmadevi","Heaven", Gender.FEMALE));
-    }
+    }*/
 }

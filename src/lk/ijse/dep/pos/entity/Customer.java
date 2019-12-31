@@ -11,35 +11,27 @@ import java.util.List;
 public class Customer implements SuperEntity{
 
     @Id
-    private String customerId;
+    private String id;
     private String name;
     private String address;
-
-    @OneToMany(mappedBy = "customer",cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE} )
-    private
-    List<Order>orders = new ArrayList<>();
-
-
+    @OneToMany(mappedBy = "customer", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
+    private List<Order> orders = new ArrayList<>();
 
     public Customer() {
     }
 
-    public Customer(String customerId, String name, String address) {
-        this.customerId = customerId;
+    public Customer(String id, String name, String address) {
+        this.id = id;
         this.name = name;
         this.address = address;
     }
 
-
-
-
-
-    public String getCustomerId() {
-        return customerId;
+    public String getId() {
+        return id;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -62,15 +54,14 @@ public class Customer implements SuperEntity{
         return orders;
     }
 
-    public void addOrders(Order order) {
-       order.setCustomer(this);
-       this.orders.add(order);
+    public void addOrder(Order order){
+        order.setCustomer(this);
+        this.orders.add(order);
     }
 
     public void removeOrder(Order order){
         if (order.getCustomer() != this){
-            throw  new RuntimeException("Invalid Order");
-
+            throw new RuntimeException("Invalid order");
         }
         order.setCustomer(null);
         this.orders.remove(order);
@@ -79,7 +70,7 @@ public class Customer implements SuperEntity{
     @Override
     public String toString() {
         return "Customer{" +
-                "customerId='" + customerId + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 '}';

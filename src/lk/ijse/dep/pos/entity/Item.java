@@ -7,6 +7,8 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 @Entity
 public class Item implements SuperEntity{
 
@@ -15,10 +17,8 @@ public class Item implements SuperEntity{
     private String description;
     private double unitPrice;
     private int qtyOnHand;
-
     @OneToMany(mappedBy = "item",cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    private List<OrderDetail> orderDetails= new ArrayList<>();
-
+    private List<OrderDetail> orderDetails = new ArrayList<>();
 
     public Item() {
     }
@@ -62,6 +62,10 @@ public class Item implements SuperEntity{
         this.qtyOnHand = qtyOnHand;
     }
 
+    public void addOrderDetail(OrderDetail orderDetail){
+        orderDetails.add(orderDetail);
+    }
+
     @Override
     public String toString() {
         return "Item{" +
@@ -71,12 +75,7 @@ public class Item implements SuperEntity{
                 ", qtyOnHand=" + qtyOnHand +
                 '}';
     }
-
-    public List<OrderDetail> getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void addOrderDetails(OrderDetail orderDetails) {
-       this.orderDetails.add(orderDetails);
-    }
 }
+
+
+

@@ -5,21 +5,25 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Entity
+@Table(name = "`Order`")
 public class Order implements SuperEntity{
 
     @Id
     private int id;
     private Date date;
 
+
+
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "customer_id",referencedColumnName = "customerId")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id", nullable = false)
     private Customer customer;
+
+
 
     @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
     private List<OrderDetail> orderDetails = new ArrayList<>();
-
-
 
     public Order() {
     }
@@ -54,13 +58,12 @@ public class Order implements SuperEntity{
         this.customer = customer;
     }
 
-
     public List<OrderDetail> getOrderDetails() {
         return orderDetails;
     }
 
-    public void addOrderDetails(OrderDetail orderDetail) {
-       this.orderDetails.add(orderDetail);
+    public void addOrderDetail(OrderDetail orderDetail){
+        this.orderDetails.add(orderDetail);
     }
 
     @Override

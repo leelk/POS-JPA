@@ -25,11 +25,7 @@ import lk.ijse.dep.pos.business.custom.CustomerBO;
 import lk.ijse.dep.pos.business.exception.AlreadyExistsInOrderException;
 import lk.ijse.dep.pos.dto.CustomerDTO;
 import lk.ijse.dep.pos.util.CustomerTM;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -108,8 +104,8 @@ public class ManageCustomerFormController implements Initializable {
         });
     }
 
-    public void btnReport_OnAction(ActionEvent actionEvent) throws JRException {
-        JasperDesign jasperDesign = JRXmlLoader.
+    public void btnReport_OnAction(ActionEvent actionEvent) {
+       /* JasperDesign jasperDesign = JRXmlLoader.
                 load(this.getClass().
                         getResourceAsStream("/lk/ijse/dep/pos/report/bean-report.jrxml"));
 
@@ -119,7 +115,7 @@ public class ManageCustomerFormController implements Initializable {
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,
                 params, new JRBeanCollectionDataSource(tblCustomers.getItems()));
 
-        JasperViewer.viewReport(jasperPrint);
+        JasperViewer.viewReport(jasperPrint);*/
     }
 
     @FXML

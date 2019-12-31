@@ -8,34 +8,28 @@ public class OrderDetail implements SuperEntity{
     @EmbeddedId
     private OrderDetailPK orderDetailPK;
     private int qty;
+    @Column(name="unit_price")
     private double unitPrice;
-
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "order_id", referencedColumnName = "id", insertable = false,updatable = false)
+    @JoinColumn(name="order_id",referencedColumnName = "id", insertable = false, updatable = false)
     private Order order;
-
-
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
-    @JoinColumn(name = "item_id", referencedColumnName = "code", insertable = false,updatable = false)
+    @JoinColumn(name="item_code",referencedColumnName = "code",insertable = false, updatable = false)
     private Item item;
-
 
     public OrderDetail() {
     }
-
 
     public OrderDetail(OrderDetailPK orderDetailPK, int qty, double unitPrice) {
         this.orderDetailPK = orderDetailPK;
         this.qty = qty;
         this.unitPrice = unitPrice;
-
     }
 
-    public OrderDetail(int order_id,String item_code, int qty, double unitPrice) {
-        this.orderDetailPK = new OrderDetailPK(order_id,item_code);
+    public OrderDetail(int orderId, String itemCode, int qty, double unitPrice) {
+        this.orderDetailPK = new OrderDetailPK(orderId, itemCode);
         this.qty = qty;
         this.unitPrice = unitPrice;
-
     }
 
     public OrderDetailPK getOrderDetailPK() {
@@ -66,26 +60,17 @@ public class OrderDetail implements SuperEntity{
         return order;
     }
 
+    // Cascading purposes...
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
     public Item getItem() {
         return item;
     }
 
-    //    Cascading Purposes
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+    // Cascading purposes...
     public void setItem(Item item) {
         this.item = item;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetail{" +
-                "orderDetailPK=" + orderDetailPK +
-                ", qty=" + qty +
-                ", unitPrice=" + unitPrice +
-                ", order=" + order +
-                ", item=" + item +
-                '}';
     }
 }
