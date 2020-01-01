@@ -1,9 +1,6 @@
 package lk.ijse.dep.pos.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +8,7 @@ import java.util.List;
 public class Customer implements SuperEntity{
 
     @Id
+    @Column(name = "customer_id")
     private String id;
     private String name;
     private String address;

@@ -11,7 +11,7 @@ public class CustomerDAOImpl extends CrudDAOImpl<Customer, String> implements Cu
     @Override
     public String getLastCustomerId() throws Exception {
         Query nativeQuery = entityManager.
-                createNativeQuery("SELECT id FROM Customer ORDER BY id DESC LIMIT 1");
+                createNativeQuery("SELECT customer_id FROM Customer ORDER BY customer_id DESC LIMIT 1");
         return nativeQuery.getResultList().size() > 0 ? (String) nativeQuery.getSingleResult() : null;
     }
 
